@@ -1,10 +1,22 @@
 # Appointment-Notification-Management-Deployment
-Deployment Script Repo for Appointment-Notification-Management System
 
-# Steps to run
+# Deployment Plan
+Minikube Cluster with a worker node where 2 Pods are deployed.
+
+A) Appointment Management - Flask App and MongoDB Container in the same Pod
+
+B) Notification Services - Flask App in the Pod and connects to external services for sending notifications
+
+# External Services:
+
+AWS RDS: Database to Host Notification Templates.
+
+AWS SES: Simple Email Service to send Email to Patients
+
+
+# Steps to run Deployment
  
-# Pre-requisite
- 
+# Pre-requisite 
 Docker Desktop is installed - https://docs.docker.com/desktop/setup/install/mac-install/
 
 Kubectl is installed - https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/
