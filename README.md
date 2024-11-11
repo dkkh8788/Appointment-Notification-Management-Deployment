@@ -47,11 +47,12 @@ kubectl apply -f notification-service-deployment.yml
 # Validate Deployment
 kubectl get all
 
-# Setup MongoDB Container port forwarding and populate the db with sample data.
+# Setup MongoDB Container port forwarding.
 kubectl port-forward pod/{$appointment-system-pod-name} 27017:27017
 
 for example: kubectl port-forward pod/appointment-service-56d49fcf4c-tkqbs 27017:27017
 
+# Add Sample data to mongodb.
 python3 populate_data.py
 
 # Validate APIs -
