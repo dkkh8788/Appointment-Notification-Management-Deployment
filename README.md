@@ -1,7 +1,6 @@
 # Appointment-Notification-Management-Deployment
 Deployment Script Repo for Appointment-Notification-Management System
 
-
 # Steps to run
  
 # Pre-requisite
@@ -11,8 +10,7 @@ Docker Desktop is installed - https://docs.docker.com/desktop/setup/install/mac-
 Kubectl is installed - https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/
 
 Minikube is installed - https://minikube.sigs.k8s.io/docs/start/?arch=%2Fmacos%2Farm64%2Fstable%2Fhomebrew
- 
- 
+
 # Steps:
  
 # Start Mini Kube
@@ -23,7 +21,7 @@ minikube status
 
 minikube service list 
 
-(docker pull <image-name> - pull the mages before so that container can start faster)
+# Pull Docker Images for microservices
 
 docker pull bhavinbpalan90/notificationservice 
 
@@ -37,10 +35,12 @@ kubectl apply -f notification-service-deployment.yml
 # Validate Deployment
 kubectl get all
 
-# Setup MongoDB Container and populate the db with sample data.
+# Setup MongoDB Container port forwarding and populate the db with sample data.
 kubectl port-forward pod/{$appointment-system-pod-name} 27017:27017
 
 for example: kubectl port-forward pod/appointment-service-56d49fcf4c-tkqbs 27017:27017
+
+python3 populate_data.py
 
 # Validate APIs -
 curl -X POST http://127.0.0.1:30000/book_appointment -H "Content-Type: application/json"  -d '{ "patient_id": "130", "doctor_id": 8884, "appointment_time": "2023-10-16 09:00" }'
