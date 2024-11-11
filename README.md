@@ -25,6 +25,10 @@ minikube service list
 
 (docker pull <image-name> - pull the mages before so that container can start faster)
 
+docker pull bhavinbpalan90/notificationservice 
+
+docker pull bits2023mt03164/appointment_management:v1
+
 # Deploy services on Kubernetes using deployment files ( This will take some time)
 kubectl apply -f appointment-svc-deployment.yml
 
@@ -32,6 +36,11 @@ kubectl apply -f notification-service-deployment.yml
 
 # Validate Deployment
 kubectl get all
+
+# Setup MongoDB Container and populate the db with sample data.
+kubectl port-forward pod/{$appointment-system-pod-name} 27017:27017
+
+for example: kubectl port-forward pod/appointment-service-56d49fcf4c-tkqbs 27017:27017
 
 # Validate APIs -
 curl -X POST http://127.0.0.1:30000/book_appointment -H "Content-Type: application/json"  -d '{ "patient_id": "130", "doctor_id": 8884, "appointment_time": "2023-10-16 09:00" }'
