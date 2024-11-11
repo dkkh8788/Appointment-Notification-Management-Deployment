@@ -5,7 +5,7 @@ Minikube Cluster with a worker node where 2 Pods are deployed.
 
 A) Appointment Management - Flask App and MongoDB Container in the same Pod
 
-B) Notification Services - Flask App in the Pod and connects to external services for sending notifications
+B) Notification Management Service - Flask App in the Pod and it connects to external services for sending notifications
 
 # External Services:
 
